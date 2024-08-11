@@ -3,4 +3,6 @@ project(RubicsCubeSover)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(RubicsCubeSover main.cpp)
+add_executable(RubicsCubeSover main.cpp
+        GenericRubiksCube.cpp
+        GenericRubiksCube.h)
