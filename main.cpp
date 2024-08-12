@@ -3,6 +3,7 @@ using namespace std;
 #include "Cube3D.cpp"
 #include "DFSSolver.h"
 #include "BFSSolver.h"
+#include "IDDFSSolver.h"
 
 int main() {
     // Cube3D object;
@@ -23,16 +24,20 @@ int main() {
     cube.print();
 
     // DFS Solver Testing _____________________
-    DFSSolver<Cube3D, Hash3d> dfsSolver(cube, 8);
-    vector<GenericRubiksCube::MOVE> solve_moves = dfsSolver.solve();
+    // DFSSolver<Cube3D, Hash3d> dfsSolver(cube, 8);
+    // vector<GenericRubiksCube::MOVE> solve_moves = dfsSolver.solve();
 
     // BFS Solver Testing _____________________
     // BFSSolver<Cube3D, Hash3d> bfsSolver(cube);
     // vector<GenericRubiksCube::MOVE> solve_moves = bfsSolver.solve();
 
+    // IDDFS Solver Testing _____________________
+    IDDFSSolver<Cube3D, Hash3d> iddfsSolver(cube);
+    vector<GenericRubiksCube::MOVE> solve_moves = iddfsSolver.solve();
+
     for (auto move: solve_moves) cout << cube.getMove(move) << " ";
     cout << "\n";
-    dfsSolver.rubiksCube.print();
+    iddfsSolver.rubiksCube.print();
 
     return 0;
 }
